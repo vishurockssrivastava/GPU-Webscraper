@@ -1,6 +1,5 @@
 # Import the Dependencies required for code to work
 # pip3 install bs4 requests pywhatkit pynput
-# import os
 from bs4 import BeautifulSoup as bs
 import requests
 import time
@@ -61,6 +60,7 @@ def check_price(URL):
             if title == 'NVIDIA GEFORCE RTX 3080' and sell_price < 65000:
                 print("Buy")
                 send_whatsapp(URL, NumberList[0])
+                send_whatsapp(URL, NumberList[2])
             elif title == 'NVIDIA GEFORCE RTX 3070' and sell_price < 45000:
                 print("Buy")
                 send_whatsapp(URL, NumberList[0])
@@ -95,7 +95,6 @@ def send_whatsapp(link, number):
     current_min = now.strftime("%M")
     send_min = int(current_min) + 1
     pywhatkit.sendwhatmsg(number, msg, current_hour, send_min+1)
-
 
 def patience():
     print('Patience my young padawan')
