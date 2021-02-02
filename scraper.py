@@ -95,6 +95,10 @@ def send_whatsapp(link, number):
     current_min = now.strftime("%M")
     send_min = int(current_min) + 1
     pywhatkit.sendwhatmsg(number, msg, current_hour, send_min+1)
+    time.sleep(7)
+    keyboard.press(Key.ctrl_l)
+    keyboard.tap('w')
+    keyboard.release(Key.ctrl_l)
 
 def patience():
     print('Patience my young padawan')
