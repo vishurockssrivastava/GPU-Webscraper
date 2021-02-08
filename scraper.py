@@ -61,18 +61,22 @@ def check_price(URL):
                 print("Buy")
                 send_whatsapp(URL, NumberList[0])
                 send_whatsapp(URL, NumberList[2])
+                send_group_message(URL)
             elif title == 'NVIDIA GEFORCE RTX 3070' and sell_price < 45000:
                 print("Buy")
                 send_whatsapp(URL, NumberList[0])
                 send_whatsapp(URL, NumberList[1])
+                send_group_message(URL)
             elif title == "NVIDIA GEFORCE RTX 3060 Ti" and sell_price < 38000:
                 print("Buy")
                 send_whatsapp(URL, NumberList[0])
                 send_whatsapp(URL, NumberList[1])
+                send_group_message(URL)
             elif title == "NVIDIA GEFORCE RTX 3090" and sell_price < 140000:
                 print("Buy")
                 send_whatsapp(URL, NumberList[2])
                 send_whatsapp(URL, NumberList[0])
+                send_group_message(URL)
             else:
                 print('Scalpers alert')
         else:
@@ -94,11 +98,24 @@ def send_whatsapp(link, number):
     current_hour = int(now.strftime("%H"))
     current_min = now.strftime("%M")
     send_min = int(current_min) + 1
-    pywhatkit.sendwhatmsg(number, msg, current_hour, send_min+1)
+    pywhatkit.sendwhatmsg(number, msg, current_hour, send_min, 10)
     time.sleep(7)
     keyboard.press(Key.ctrl_l)
     keyboard.tap('w')
     keyboard.release(Key.ctrl_l)
+    keyboard.tap(Key.enter)
+
+def send_group_message(link):
+    msg = "GPU is available for purchase at: " + str(link)
+    now = datetime.now()
+    current_hour = int(now.strftime("%H"))
+    current_min = int(now.strftime("%M")) + 1
+    pw.sendwhatmsg_to_group(NumberList[3], msg, current_hour, current_min, 10)
+    time.sleep(7)
+    keyboard.press(Key.ctrl_l)
+    keyboard.tap('w')
+    keyboard.release(Key.ctrl_l)
+    keyboard.tap(Key.enter)
 
 def patience():
     print('Patience my young padawan')
