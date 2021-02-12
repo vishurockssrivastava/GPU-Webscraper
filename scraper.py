@@ -124,7 +124,7 @@ def patience():
 
 if __name__ == '__main__':
     for line in open('numbers.txt', 'r').readlines(  ):
-        NumberList.append(line[:14])
+        NumberList.append(line.strip('\n'))
     print(NumberList)
     try:
         while(True):
