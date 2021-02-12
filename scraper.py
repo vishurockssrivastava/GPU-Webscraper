@@ -112,7 +112,7 @@ def send_group_message(link):
     now = datetime.now()
     current_hour = int(now.strftime("%H"))
     current_min = int(now.strftime("%M")) + 1
-    pw.sendwhatmsg_to_group(NumberList[3], msg, current_hour, current_min, 10)
+    pywhatkit.sendwhatmsg_to_group(NumberList[3], msg, current_hour, current_min, 10)
     time.sleep(7)
     keyboard.press(Key.ctrl_l)
     keyboard.tap('w')
