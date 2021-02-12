@@ -22,6 +22,8 @@ NumberList = []
 # Set your User Agent (Google My User Agent to find out what your user agent is)
 headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"}
 
+keyboard = Controller()
+
 def check_price(URL):
     # Scrape the web page
     # Call the page at the URL using the Headers declared above.
